@@ -1,3 +1,145 @@
+section.contact-form-sec {
+  padding: 50px 0;
+}
+section {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+@media (min-width: 1200px){
+.container {
+  width: 1170px;
+}
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.cntct-l-col {
+  background: url(../images/images-contact-side-img-inner.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 590px;
+  padding-top: 50px;
+  border-radius: 10px 0 0 10px;
+}
+.cntct-l-side {
+  color: #fff;
+}
+.cntct-l-side h4 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.cntct-l-side a {
+  color: #fff;
+  display: block;
+}
+.cntct-r-col {
+  background: #f0efef;
+  min-height: 590px;
+  padding-top: 50px;
+  border-radius: 0 10px 10px 0;
+}
+.header {
+  background-color: #ff9d1d;
+}
+.cntct-r-side {
+  padding: 0 25px;
+}
+.hd-txt {
+  padding-bottom: 40px;
+  text-align: center;
+}
+.hd-txt h2 {
+  padding-top: 20px;
+}
+
+.cntct-r-side h2 {
+  text-align: left;
+}
+.hd-txt h2 {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.p0 {
+  padding: 0 !important;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+@media (min-width: 992px){
+.col-md-12 {
+  width: 100%;
+}
+}
+@media (min-width: 992px){
+.col-md-6 {
+  width: 100%;
+}
+}
+@media (min-width: 768px){
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 100%;
+}
+}
+.cntct-r-side #contactForm input, .cntct-r-side #contactForm textarea {
+  border-bottom: 2px solid #cacaca;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-radius: 0;
+  width: 100%;
+  background: 0 0;
+}
+#contactForm textarea {
+  height: 150px;
+  padding: 20px;
+}
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+textarea {
+  overflow: auto;
+}
+button, input, optgroup, select, textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+.cntct-r-side #contactForm input, .cntct-r-side #contactForm textarea::placeholder {
+  color: #5b5b5b;
+}
+.cntct-r-side #contactForm input {
+  padding: 20px;
+  width: 100%;
+  background: 0 0;
+}
+.cntct-r-side #contactForm input, .cntct-r-side #contactForm textarea {
+  border-bottom: 2px solid #cacaca;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-radius: 0;
+  width: 100%;
+  background: 0 0;
+}
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
 .profile-pic {
   position: relative;
   max-width:130px;
