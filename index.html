@@ -76,9 +76,9 @@
         document.getElementById("contact-form").reset();
     location.reload();
       },
-      error: function () {
+      error: function (error) {
         // show an error message
-        alert("UnSuccessfull");
+        alert(error);
       }});
   }
 </script>
