@@ -23,6 +23,7 @@
   <title>Varad Bhogayata | Software Developer</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script lang="JavaScript" type="text/javascript"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126939217-2"></script>
 <script>
   function submitToAPI(e) {
@@ -76,9 +77,9 @@
         document.getElementById("contact-form").reset();
     location.reload();
       },
-      error: function (error) {
+      error: function () {
         // show an error message
-        alert(JSON.parse(error));
+        alert("unsuccessfull.");
       }});
   }
 </script>
