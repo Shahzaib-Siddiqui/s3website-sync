@@ -24,6 +24,64 @@
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126939217-2"></script>
+<script>
+  function submitToAPI(e) {
+    e.preventDefault();
+    var URL = "https://mf2a6vv4vg.execute-api.ap-southeast-1.amazonaws.com/prod/contact_us";
+
+         var Namere = /[A-Za-z]{1}[A-Za-z]/;
+         if (!Namere.test($("#name-input").val())) {
+                      alert ("Name can not less than 2 char");
+             return;
+         }
+         var mobilere = /[0-9]{10}/;
+         if (!mobilere.test($("#phone-input").val())) {
+             alert ("Please enter valid mobile number");
+             return;
+         }
+         if ($("#email-input").val()=="") {
+             alert ("Please enter your email id");
+             return;
+         }
+
+         var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+         if (!reeamil.test($("#email-input").val())) {
+             alert ("Please enter valid email address");
+             return;
+         }
+
+    var name = $("#name-input").val();
+    var phone = $("#phone-input").val();
+    var email = $("#email-input").val();
+    var desc = $("#description-input").val();
+    var data = {
+       name : name,
+       phone : phone,
+       email : email,
+       desc : desc
+     };
+
+    $.ajax({
+      type: "POST",
+      url : "https://mf2a6vv4vg.execute-api.ap-southeast-1.amazonaws.com/prod/contact_us",
+      dataType: "json",
+      crossDomain: "true",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(data),
+
+      
+      success: function () {
+        // clear form and show a success message
+        alert("Successfull");
+        document.getElementById("contact-form").reset();
+    location.reload();
+      },
+      error: function () {
+        // show an error message
+        alert("UnSuccessfull");
+      }});
+  }
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -1008,60 +1066,18 @@ of each drug container to estimate the degradation of the drug.
       </div>
     </section> -->
 
-    <section class="contact-form-sec" style="background: #fff;">
-      <div class="container">
-          <div class="row">
-              <div class="col-sm-5 cntct-l-col">
-                  <div class="cntct-l-side">
-                      <h4>Contact Information</h4>
-                      <p style="font-weight: 500;color: #fff;">Call us now to talk to our experts or leave us an email for a quick response</p>
-                      <p style="font-weight: 500;color: #fff;">1242 State Ave Ste I PMB# 1029 Marysville, WA 98270</p>
-                      <a style="font-weight: 500;color: #fff;" href="tel:+1-888-422-8033" class="callphone"><i class="fa fa-phone" aria-hidden="true"></i>+1-888-422-8033</a>
-                      <a style="font-weight: 500;color: #fff;" href="mailto:query@amzfounders.com" mailto:class="ftr-li">query@amzfounders.com</a>
-                  </div>
-              </div>
-              <div class="col-sm-7 cntct-r-col">
-                  <div class="cntct-r-side">
-                      <div class="hd-txt">
-                          <h2>Get In Touch</h2>
-                      </div>
-                      <div id="contactForm">
-                          <form class="jform validate" action="/leads/" method="post">
-                          <input type="hidden" name="route" value="<?= $_SERVER['REQUEST_URI'] ?>">   
-                  <input type="hidden" name="brand" value="vanillaheartbookandauthors">   
-                  <input type="hidden" name="token" value="<?= $token;?>">   
-                  <input type="hidden" name="tag" value="leads-form">
-                  <input type="hidden" name="price" value="null">
-                  <input type="hidden" name="news" value="1">
-                              <div class="row">
-                                  <div class="col-md-12 form-group p0">
-                                      <div class="col-md-6 col-sm-12 col-xs-12 ">
-                                          <input type="text" name="name" id="username" placeholder="Name" minlength="2" maxlength="60" required="" onkeypress="return /[a-z]/i.test(event.key)">
-                                      </div>
-                                      <div class="col-md-6 col-sm-12 col-xs-12 r-side 	">
-                                          <input type="email" name="email" id="cemail" placeholder="Email" maxlength="60" required="">
-                                      </div>
-                                  </div>
-                                  <div class="col-md-12 col-sm-12 col-xs-12 phone form-group">
-                                      <input type="number" id="phone-coun" name="phone" placeholder="Phone" minlength="7" maxlength="11" required="" onkeypress="return /[0-9]/i.test(event.key)">
-                                  </div>
-
-                                  <div class="col-md-12 form-group txt-area">
-                                      <textarea name="brief" placeholder="brief" minlength="2" maxlength="1000"></textarea>
-                                  </div>
-
-                                  <div class="col-md-12 btn-set-ftr">
-
-                                      <input type="submit" name="submit" class="btn btn-default ybtn ftr-form-btn btn-started" value="Get a Quote">
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+    <form id="contact-form" method="post">
+      <h4>Name:</h4>
+      <input type="text" style="height:35px;" id="name-input" placeholder="Enter name here…" class="form-control" style="width:100%;" /><br/>
+      <h4>Phone:</h4>
+      <input type="phone" style="height:35px;" id="phone-input" placeholder="Enter phone number" class="form-control" style="width:100%;"/><br/>
+      <h4>Email:</h4>
+      <input type="email" style="height:35px;" id="email-input" placeholder="Enter email here…" class="form-control" style="width:100%;"/><br/>
+      <h4>How can we help you?</h4>
+      <textarea id="description-input" rows="3" placeholder="Enter your message…" class="form-control" style="width:100%;"></textarea><br/>
+      <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control" style="width:100%;"></div>
+      <button type="button" onClick="submitToAPI(event)" class="btn btn-lg" style="margin-top:20px;">Submit</button>
+</form>
   </main>
 
   <!-- typed.js -->
